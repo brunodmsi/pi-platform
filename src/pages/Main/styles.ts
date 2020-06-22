@@ -1,75 +1,10 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
   main {
     margin-left: 15rem;
+    overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
-    padding: 1rem;
-  }
-
-  nav {
-    width: 15rem;
-    height: 100vh;
-    font-family: 'Montserrat', serif;
-    position: fixed;
-    background-color: #7380F3;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    color: #fefefe;
-
-    p {
-      align-self: center;
-      margin-bottom: 30px;
-    }
-
-    header {
-      display: flex;
-      /* justify-content: center; */
-      align-self: center;
-      align-items: center;
-      margin-top: 30px;
-
-      h3 {
-        font-size: 60px;
-      }
-
-      p {
-        font-family: 'Montserrat', serif;
-        font-size: 30px;
-        font-weight: 100;
-      }
-    }
-
-    ul {
-      display: flex;
-      list-style: none;
-      flex-direction: column;
-
-      li {
-        place-content: center;
-        width: 100%;
-        transition: .3s background-color;
-
-        a {
-          display: flex;
-          align-items: center;
-          height: 5rem;
-          font-size: 25px;
-          justify-content: center;
-          color: #fefefe;
-          text-decoration: none;
-        }
-
-        &:hover {
-          background-color: #fefefe;
-
-          a {
-            color: #7380F3;
-          }
-        }
-      }
-    }
   }
 
   @media only screen and (max-width: 900px) {
@@ -102,8 +37,9 @@ export const Container = styled.div`
 export const IntroductionContent = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
+  height: 85vh;
+  width: 100%;
   max-width: 900px;
   margin-left: 50px;
 
@@ -120,5 +56,107 @@ export const IntroductionContent = styled.div`
 
   .vote-text {
     margin-top: 50px;
+    font-size: 30px;
+    font-weight: 100;
+  }
+
+  .vote-timer {
+    font-size: 40px;
+    font-weight: 500;
+  }
+`;
+
+const upAndDown = keyframes`
+  0%, 100% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+`;
+
+export const Continue = styled.div`
+  height: 15vh;
+  justify-content: center;
+  color: #fe7940;
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    animation: ${upAndDown} 1s linear infinite;
+
+    p {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+  }
+`;
+
+export const Period = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  color: #7380f3;
+  margin-left: 5rem;
+
+  h3 {
+    font-size: 50px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 30px;
+  }
+`;
+
+export const Cards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(3, 400px); */
+`;
+
+export const Card = styled.div`
+  font-family: 'Roboto', serif;
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  height: 300px;
+  color: #000;
+  position: relative;
+  cursor: pointer;
+  margin: 15px 0;
+  padding: 30px;
+  box-shadow: 0px 0px 10px -4px rgba(0,0,0,0.5);
+
+  header {
+    display: flex;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  span {
+    position: absolute;
+    font-size: 16px;
+    font-weight: 100;
+    bottom: 30px;
   }
 `;
