@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import ReactModal from 'react-modal';
 import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import './styles.css';
 
 import { Container, Votebox } from './styles';
+
+import api from '../../services/api';
 
 import { Project } from '../../pages/Main/index';
 interface ModalProps {
@@ -14,7 +15,36 @@ interface ModalProps {
   close: () => void;
 }
 
+interface FormProps {
+  email: string;
+}
+
 const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
+  useEffect(() => {
+    ReactModal.setAppElement('body');
+  }, [])
+
+  const handleSubmit = useCallback(async (data: FormProps) => {
+    try {
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email()
+          .required()
+      });
+
+      await schema.validate(data, {
+        abortEarly: false
+      })
+
+      await api.post('/votes', {
+        email: data.email,
+        projectId: project.id,
+      });
+    } catch(err) {
+      alert('E-mail incorreto, ou ocorreu um erro com o servidor. Tente novamente.')
+    }
+  }, [])
+
   return (
     <>
       <ReactModal isOpen={isOpen} className="modal" overlayClassName="background">
@@ -41,10 +71,10 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
             <Votebox>
               <h1>VOTE AQUI</h1>
               <p>Insira o seu e-mail para realizar a votacao desse projeto</p>
-              <form>
-                <input type="text" placeholder="Seu e-mail"/>
+              <Form onSubmit={handleSubmit}>
+                <input type="text" name="email" placeholder="Seu e-mail"/>
                 <button type="submit">VOTAR</button>
-              </form>
+              </Form>
             </Votebox>
           </div>
 

@@ -8,6 +8,7 @@ import Modal from '../../components/Modal';
 import api from '../../services/api';
 
 export interface Project {
+  id: string;
   image: string;
   title: string;
   description: string;
