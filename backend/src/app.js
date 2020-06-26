@@ -9,7 +9,25 @@ mongoose.connect('mongodb://localhost:27017/pi-platform', {
   useNewUrlParser: true,
 });
 
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:4040/',
+  'http://pi.omnicesupa.com/',
+  'https://pi.omnicesupa.com/',
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not '
+                + 'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+
+    return callback(null, true);
+  },
+}));
 app.use(express.json());
 
 const routes = require('./routes');
