@@ -9,6 +9,6 @@ app.use(express.static(`${baseDir}`))
 
 app.get('*', (req,res) => res.sendFile('index.html' , { root : baseDir }))
 
-const port = process.env.REACT_APP_DEPLOY_PORT || 4003;
+const port = process.env.REACT_APP_PORT || 4040;
 
 app.listen(port, () => console.log(`Servidor subiu com sucesso em http://localhost:${port}`))
