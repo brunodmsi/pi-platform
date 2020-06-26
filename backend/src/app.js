@@ -10,6 +10,7 @@ mongoose.connect('mongodb://localhost:27017/pi-platform', {
 });
 
 const allowedOrigins = [
+  'http://localhost:3000',
   'http://localhost:4040/',
   'http://pi.omnicesupa.com/',
   'https://pi.omnicesupa.com/',
