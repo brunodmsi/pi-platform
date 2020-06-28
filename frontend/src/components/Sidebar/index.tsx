@@ -23,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ periods, ...rest }) => {
 
       <ul>
         {list && list.map(item => (
-          <li><a href="">{item.name}</a></li>
+          <li key={item.id}><a href="">{item.name}</a></li>
         ))}
       </ul>
 

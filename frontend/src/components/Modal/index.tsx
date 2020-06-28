@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ReactModal from 'react-modal';
-import { Form } from '@unform/web';
+// import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import './styles.css';
 
@@ -15,35 +15,39 @@ interface ModalProps {
   close: () => void;
 }
 
-interface FormProps {
-  email: string;
-}
-
 const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
+  const [email, setEmail] = useState('');
+
   useEffect(() => {
     ReactModal.setAppElement('body');
   }, [])
 
-  const handleSubmit = useCallback(async (data: FormProps) => {
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
     try {
       const schema = Yup.object().shape({
         email: Yup.string()
           .email()
           .required()
       });
+      console.log(email);
 
-      await schema.validate(data, {
+      await schema.validate({ email }, {
         abortEarly: false
       })
 
       await api.post('/votes', {
-        email: data.email,
+        email,
         projectId: project.id,
       });
+
+      setEmail('');
+      alert('Voto feito com sucesso!')
     } catch(err) {
       alert('E-mail incorreto, ou ocorreu um erro com o servidor. Tente novamente.')
     }
-  }, [])
+  }
 
   return (
     <>
@@ -71,10 +75,15 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
             <Votebox>
               <h1>VOTE AQUI</h1>
               <p>Insira o seu e-mail para realizar a votacao desse projeto</p>
-              <Form onSubmit={handleSubmit}>
-                <input type="text" name="email" placeholder="Seu e-mail"/>
+              <form onSubmit={handleSubmit}>
+                <input
+                  name="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="Seu e-mail"
+                />
                 <button type="submit">VOTAR</button>
-              </Form>
+              </form>
             </Votebox>
           </div>
 

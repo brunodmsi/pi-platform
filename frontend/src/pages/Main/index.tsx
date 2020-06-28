@@ -19,6 +19,7 @@ export interface Project {
 }
 
 export interface Periods {
+  id: string;
   name: string;
   description: string;
   projects: Array<Project>;
@@ -69,7 +70,7 @@ const Main: React.FC = () => {
 
             <Cards>
               {period.projects.map(project => (
-                <>
+                <React.Fragment key={project.id}>
                   <Card onClick={openModal}>
                     <header>
                       <img src={project.image} alt={project.title}/>
@@ -82,7 +83,7 @@ const Main: React.FC = () => {
                   </Card>
 
                   <Modal project={project} isOpen={modalOpen} close={closeModal} />
-                </>
+                </React.Fragment>
               ))}
             </Cards>
           </Period>

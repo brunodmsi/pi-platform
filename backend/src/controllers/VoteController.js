@@ -3,13 +3,7 @@ const Project = require('../models/Project');
 
 class VoteController {
   async index(req, res) {
-    const votes = await Vote.find([
-      {
-        $group: {
-          'project_id': '$projectId'
-        }
-      }
-    ]);
+    const votes = await Vote.find({});
 
     return res.json(votes);
   }
