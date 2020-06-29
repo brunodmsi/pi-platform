@@ -1,4 +1,6 @@
 import styled, { keyframes } from 'styled-components';
+import { darken } from 'polished';
+import { Link } from 'react-scroll';
 
 export const Container = styled.div`
   main {
@@ -133,10 +135,15 @@ const upAndDown = keyframes`
   }
 `;
 
-export const Continue = styled.div`
+export const Continue = styled(Link)`
   height: 15vh;
   justify-content: center;
   color: #fe7940;
+  cursor: pointer;
+
+  &:hover {
+    color: ${darken(0.1, '#fe7940')}
+  }
 
   div {
     display: flex;

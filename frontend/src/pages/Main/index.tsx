@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowDown } from 'react-icons/fa';
+// import { Link, animateScroll as scroll } from 'react-scroll';
 
 import { Container, IntroductionContent, Continue, Period, Cards, Card } from './styles';
 import Sidebar from '../../components/Sidebar';
@@ -27,7 +28,7 @@ export interface Periods {
 
 const Main: React.FC = () => {
   const [modalOpen, setModalOpen] = useState('');
-  const [periods, setPeriods] = useState<Periods[] | null>([]);
+  const [periods, setPeriods] = useState<Periods[] | null>(null);
 
   useEffect(() => {
     api.get('/periods').then(({ data }) => {
@@ -37,7 +38,6 @@ const Main: React.FC = () => {
 
   function getTimeRemaining() {
     const endtime = '2020-07-20T02:59:59Z';
-    console.log(new Date().toISOString())
     const total = Date.parse(endtime) - Date.parse(new Date().toISOString());
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
@@ -49,19 +49,12 @@ const Main: React.FC = () => {
   }
 
   function openModal(_id: string) {
-    console.log(_id);
     setModalOpen(_id);
   }
 
   function closeModal() {
     setModalOpen('none');
   }
-
-  // function renderModal(project) {
-  //   if (!modalOpen) {
-  //     return null;
-  //   }
-  // }
 
   return (
     <Container>
@@ -76,7 +69,10 @@ const Main: React.FC = () => {
           <p className="vote-timer">{getTimeRemaining()}</p>
         </IntroductionContent>
 
-        <Continue>
+        <Continue
+          to={periods ? periods[0]._id : 'null'}
+          smooth={true}
+        >
           <div>
             <p>Clique aqui para continuar</p>
             <FaArrowDown size={20} />

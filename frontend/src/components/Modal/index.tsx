@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
-// import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import './styles.css';
 
