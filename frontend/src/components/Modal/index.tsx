@@ -54,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
       <ReactModal isOpen={isOpen} className="modal" overlayClassName="background">
         <Container>
           <header>
-            <img src={project.image} alt={project.title}/>
+            {project.image ? <img src={project.image} alt={project.title}/> : <></>}
             <h1>{project.title}</h1>
           </header>
 

@@ -210,11 +210,11 @@ export const Card = styled.div`
     img {
       width: 50px;
       height: 50px;
+      margin-right: 20px;
     }
 
     h1 {
       font-size: 30px;
-      margin-left: 20px;
       font-weight: 600;
     }
   }

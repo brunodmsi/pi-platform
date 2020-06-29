@@ -13,12 +13,12 @@ export const Container = styled.div`
       width: 120px;
       height: 120px;
       border-radius: 50%;
+      margin-right: 40px;
       border: 1px solid #141414;
     }
 
     h1 {
       font-size: 50px;
-      margin-left: 40px;
       font-weight: 600;
     }
   }

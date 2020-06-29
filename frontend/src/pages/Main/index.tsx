@@ -86,7 +86,7 @@ const Main: React.FC = () => {
                 <React.Fragment key={project.id}>
                   <Card onClick={openModal}>
                     <header>
-                      <img src={project.image} alt={project.title}/>
+                      {project.image ? <img src={project.image} alt={project.title}/> : <></>}
                       <h1>{project.title}</h1>
                     </header>
 
