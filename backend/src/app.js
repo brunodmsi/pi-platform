@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const rateLimiter = require('./middlewares/rateLimiter');
+
+require('dotenv/config');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/pi-platform', {
+mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useFindAndModify: true
@@ -31,6 +34,7 @@ app.use(cors({
   },
 }));
 app.use(express.json());
+app.use(rateLimiter);
 
 const routes = require('./routes');
 
