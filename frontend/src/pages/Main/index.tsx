@@ -26,7 +26,7 @@ export interface Periods {
 }
 
 const Main: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState('5efa3d32e854e842354377d4');
+  const [modalOpen, setModalOpen] = useState('');
   const [periods, setPeriods] = useState<Periods[] | null>([]);
 
   useEffect(() => {
