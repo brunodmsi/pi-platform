@@ -17,18 +17,18 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  participants: {
-    type: String,
-    required: true,
-  },
+  // participants: {
+  //   type: String,
+  //   required: true,
+  // },
   github: {
     type: String,
     required: true,
   },
-  trello: {
-    type: String,
-    required: true,
-  },
+  // trello: {
+  //   type: String,
+  //   required: true,
+  // },
   video: {
     type: String,
     required: true,

@@ -213,7 +213,7 @@ export const Card = styled.div`
     }
 
     h1 {
-      font-size: 40px;
+      font-size: 30px;
       margin-left: 20px;
       font-weight: 600;
     }

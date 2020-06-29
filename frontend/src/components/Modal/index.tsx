@@ -60,9 +60,9 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
 
           <p>{project.description}</p>
 
-          <span>{project.participants}</span>
+          {/* <span>{project.participants}</span> */}
           <a href={project.github}>{project.github}</a>
-          <a href={project.trello}>{project.trello}</a>
+          {/* <a href={project.trello}>{project.trello}</a> */}
 
           <div>
             <iframe

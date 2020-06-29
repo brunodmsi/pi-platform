@@ -23,7 +23,7 @@ class ProjectController {
 
   async store(req, res) {
     const {
-      title, image, description, participants, github, trello, video, period_id
+      title, image, description, participants, github, video, period_id
     } = req.body;
 
     const period = await Period.findOne({ _id: period_id });
@@ -34,7 +34,7 @@ class ProjectController {
     }
 
     const project = await Project.create({
-      title, image, description, participants, github, trello, video, period_id: period.id
+      title, image, description, participants, github, video, period_id: period.id
     });
 
     period.projects.push(project);

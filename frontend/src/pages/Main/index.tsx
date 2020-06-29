@@ -35,6 +35,19 @@ const Main: React.FC = () => {
     })
   }, []);
 
+  function getTimeRemaining() {
+    const endtime = '2020-07-20T23:59:59Z';
+    console.log(new Date().toISOString())
+    const total = Date.parse(endtime) - Date.parse(new Date().toISOString());
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+    return (
+      <p className="vote-timer">{days} dias, {hours} horas e {minutes} minutos</p>
+    )
+  }
+
   function openModal() {
     setModalOpen(true);
   }
@@ -53,7 +66,7 @@ const Main: React.FC = () => {
           <p className="introduction-info">Nesta página você poderá votar nos projetos integrados de Ciência da Computação</p>
           <p className="introduction-info">Para saber mais sobre os projetos, clique em cima deles, e quando achar o que te chamou mais atenção, vote!</p>
           <p className="vote-text">A votação acaba em</p>
-          <p className="vote-timer">1 dia, 5 horas e 32 minutos</p>
+          <p className="vote-timer">{getTimeRemaining()}</p>
         </IntroductionContent>
 
         <Continue>
@@ -77,9 +90,9 @@ const Main: React.FC = () => {
                       <h1>{project.title}</h1>
                     </header>
 
-                    <p>{project.description}</p>
+                    <p>{project.description.slice(0, 220).concat('...')} </p>
 
-                    <span>{project.participants}</span>
+                    {/* <span>{project.participants}</span> */}
                   </Card>
 
                   <Modal project={project} isOpen={modalOpen} close={closeModal} />

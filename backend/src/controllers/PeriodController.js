@@ -31,6 +31,14 @@ class PeriodController {
 
     return res.json(period);
   }
+
+  async destroy(req, res) {
+    const { id } = req.params;
+
+    await Period.findByIdAndDelete(id);
+
+    return res.json(true);
+  }
 }
 
 module.exports = new PeriodController();
