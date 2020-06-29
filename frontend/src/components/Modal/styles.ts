@@ -4,6 +4,7 @@ export const Container = styled.div`
   height: 100%;
   width: 100%;
   padding: 80px;
+  overflow-y: auto;
 
   header {
     display: flex;
@@ -12,7 +13,6 @@ export const Container = styled.div`
     img {
       width: 120px;
       height: 120px;
-      /* border-radius: 50%; */
       margin-right: 40px;
       border: 0
     }
