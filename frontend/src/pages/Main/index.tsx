@@ -8,7 +8,7 @@ import Modal from '../../components/Modal';
 import api from '../../services/api';
 
 export interface Project {
-  id: string;
+  _id: string;
   image: string;
   title: string;
   description: string;
@@ -26,7 +26,7 @@ export interface Periods {
 }
 
 const Main: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState('5efa3d32e854e842354377d4');
   const [periods, setPeriods] = useState<Periods[] | null>([]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Main: React.FC = () => {
   }, []);
 
   function getTimeRemaining() {
-    const endtime = '2020-07-20T23:59:59Z';
+    const endtime = '2020-07-20T02:59:59Z';
     console.log(new Date().toISOString())
     const total = Date.parse(endtime) - Date.parse(new Date().toISOString());
     const minutes = Math.floor((total / 1000 / 60) % 60);
@@ -48,13 +48,20 @@ const Main: React.FC = () => {
     )
   }
 
-  function openModal() {
-    setModalOpen(true);
+  function openModal(_id: string) {
+    console.log(_id);
+    setModalOpen(_id);
   }
 
   function closeModal() {
-    setModalOpen(false);
+    setModalOpen('none');
   }
+
+  // function renderModal(project) {
+  //   if (!modalOpen) {
+  //     return null;
+  //   }
+  // }
 
   return (
     <Container>
@@ -83,19 +90,17 @@ const Main: React.FC = () => {
 
             <Cards>
               {period.projects.map(project => (
-                <React.Fragment key={project.id}>
-                  <Card onClick={openModal}>
+                <React.Fragment key={project._id}>
+                  <Card onClick={() => openModal(project._id)}>
                     <header>
                       {project.image ? <img src={project.image} alt={project.title}/> : <></>}
                       <h1>{project.title}</h1>
                     </header>
 
                     <p>{project.description.slice(0, 220).concat('...')} </p>
-
-                    {/* <span>{project.participants}</span> */}
                   </Card>
 
-                  <Modal project={project} isOpen={modalOpen} close={closeModal} />
+                  <Modal project={project} isOpen={modalOpen === project._id} close={closeModal} />
                 </React.Fragment>
               ))}
             </Cards>

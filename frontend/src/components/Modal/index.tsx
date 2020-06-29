@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
 
       await api.post('/votes', {
         email,
-        projectId: project.id,
+        projectId: project._id,
       });
 
       setEmail('');
@@ -66,8 +66,8 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
 
           <div>
             <iframe
-              width="600"
-              height="300"
+              // width="600"
+              // height="300"
               src={project.video}
               frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             ></iframe>

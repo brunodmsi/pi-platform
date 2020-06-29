@@ -12,14 +12,30 @@ export const Container = styled.div`
     img {
       width: 120px;
       height: 120px;
-      border-radius: 50%;
+      /* border-radius: 50%; */
       margin-right: 40px;
-      border: 1px solid #141414;
+      border: 0
     }
 
     h1 {
       font-size: 50px;
       font-weight: 600;
+    }
+  }
+
+  iframe {
+    width: 600px;
+    height: 300px;
+    @media (max-width: 600px) {
+      & {
+        width: 400px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      & {
+        width: 350px;
+      }
     }
   }
 
@@ -29,6 +45,7 @@ export const Container = styled.div`
     right: -20px;
     height: 70px;
     width: 70px;
+    z-index: 999;
     border-radius: 50%;
     border: 0;
     background-color: #fe7940;
@@ -52,6 +69,23 @@ export const Container = styled.div`
   p {
     margin: 30px 0 20px 0;
     font-size: 25px;
+  }
+
+  @media (max-width: 800px) {
+    header {
+      img {
+        width: 80px;
+        height: 80px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+    }
+
+    p {
+      font-size: 20px;
+    }
   }
 
   a, span {
