@@ -49,6 +49,8 @@ const Main: React.FC = () => {
   }
 
   function openModal(_id: string) {
+    api.post(`/projects/click/${_id}`);
+
     setModalOpen(_id);
   }
 
