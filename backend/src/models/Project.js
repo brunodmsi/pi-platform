@@ -16,6 +16,10 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  times_clicked: {
+    type: Number,
+    default: 0,
+  },
   // participants: {
   //   type: String,
   //   required: true,
