@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowDown } from 'react-icons/fa';
-// import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 import { Container, IntroductionContent, Continue, Period, Cards, Card } from './styles';
 import Sidebar from '../../components/Sidebar';
@@ -69,14 +69,14 @@ const Main: React.FC = () => {
           <p className="vote-timer">{getTimeRemaining()}</p>
         </IntroductionContent>
 
-        <Continue
-          to={periods ? periods[0]._id : 'null'}
-          smooth={true}
-        >
-          <div>
+        <Continue>
+          <Link
+            to={periods ? periods[0]._id : 'null'}
+            smooth={true}
+          >
             <p>Clique aqui para continuar</p>
             <FaArrowDown size={20} />
-          </div>
+          </Link>
         </Continue>
 
         {periods?.map(period => (

@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 import { darken } from 'polished';
-import { Link } from 'react-scroll';
 
 export const Container = styled.div`
   main {
@@ -29,9 +28,9 @@ export const Container = styled.div`
         flex-direction: row;
 
         li {
-          a {
-            font-size: 16px;
-          }
+          display: flex;
+          place-content: center;
+          font-size: 18px;
         }
       }
     }
@@ -135,7 +134,7 @@ const upAndDown = keyframes`
   }
 `;
 
-export const Continue = styled(Link)`
+export const Continue = styled.div`
   height: 15vh;
   justify-content: center;
   color: #fe7940;
@@ -145,7 +144,7 @@ export const Continue = styled(Link)`
     color: ${darken(0.1, '#fe7940')}
   }
 
-  div {
+  a {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -166,6 +165,8 @@ export const Period = styled.div`
   font-family: 'Montserrat', sans-serif;
   color: #7380f3;
   margin-left: 5rem;
+
+  margin-bottom: 5rem;
 
   h3 {
     font-size: 50px;
