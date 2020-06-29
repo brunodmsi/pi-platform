@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 import { Container } from './styles';
 
@@ -23,7 +24,15 @@ const Sidebar: React.FC<SidebarProps> = ({ periods, ...rest }) => {
 
       <ul>
         {list && list.map(item => (
-          <li key={item.id}><a href="">{item.name}</a></li>
+          <Link
+            activeClass="active"
+            to={item._id}
+            spy={true}
+            smooth={true}
+            duration={200}
+          >
+            <li key={item._id}>{item.name}</li>
+          </Link>
         ))}
       </ul>
 

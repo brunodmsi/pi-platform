@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@types/react": "^16.9.41"
+    "@types/react": "^16.9.41",
+    "@types/react-scroll": "^1.5.5"
   }
 }

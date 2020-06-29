@@ -19,7 +19,7 @@ export interface Project {
 }
 
 export interface Periods {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   projects: Array<Project>;
@@ -84,7 +84,7 @@ const Main: React.FC = () => {
         </Continue>
 
         {periods?.map(period => (
-          <Period>
+          <Period id={period._id}>
             <h3>{period.name}</h3>
             <p>{period.description}</p>
 

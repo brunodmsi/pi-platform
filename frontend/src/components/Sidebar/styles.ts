@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.nav`
   width: 15rem;
@@ -37,29 +38,34 @@ export const Container = styled.nav`
     display: flex;
     list-style: none;
     flex-direction: column;
+    width: 100%;
+
+    .active {
+      background-color: #fefefe;
+      color: #7380F3;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      height: 5rem;
+      font-size: 25px;
+      width: 100%;
+      justify-content: space-between;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        color: #fefefe;
+        background-color: ${darken(0.03, '#7380F3')};
+      }
+    }
 
     li {
+      display: flex;
       place-content: center;
       width: 100%;
       transition: .3s background-color;
-
-      a {
-        display: flex;
-        align-items: center;
-        height: 5rem;
-        font-size: 25px;
-        justify-content: center;
-        color: #fefefe;
-        text-decoration: none;
-      }
-
-      &:hover {
-        background-color: #fefefe;
-
-        a {
-          color: #7380F3;
-        }
-      }
     }
   }
 `;
