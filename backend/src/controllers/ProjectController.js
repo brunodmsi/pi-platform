@@ -43,6 +43,15 @@ class ProjectController {
     return res.json(project);
   }
 
+  async update(req, res) {
+    const { id } = req.params;
+    const { image, github, video } = req.body;
+
+    const project = await Project.findByIdAndUpdate({ _id: id }, { image, github, video });
+
+    return res.json(project);
+  }
+
   async destroy(req, res) {
     const { id } = req.params;
 

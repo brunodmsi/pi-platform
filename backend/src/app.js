@@ -7,6 +7,7 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/pi-platform', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
+  useFindAndModify: true
 });
 
 const allowedOrigins = [
