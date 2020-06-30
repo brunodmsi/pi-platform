@@ -7,11 +7,15 @@ require('dotenv/config');
 
 const app = express();
 
-mongoose.connect(process.env.MONGO_URI, {
+const connection = mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}`, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  useFindAndModify: true
+  useFindAndModify: true,
+  auth: {
+    authdb: "admin"
+  }
 });
+//console.log(connection.connection.readyState);
 
 const allowedOrigins = [
   'http://localhost:3000',
