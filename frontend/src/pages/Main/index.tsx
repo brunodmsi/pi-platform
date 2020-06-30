@@ -74,7 +74,7 @@ const Main: React.FC = () => {
             do curso de Bacharelado em Ciência da Computação do CESUPA.
           </p>
           <p className="introduction-info">Ajude-nos a escolher os melhores projetos!</p>
-          <p className="introduction-info">Para isso, basta selecionar o período da turma e votar no projeto que você contrataria.</p>
+          <p className="introduction-info">Para isso, basta selecionar o período da turma e votar na melhor proposta para o mercado.</p>
 
           <p>Realizado por:</p>
           <section>
