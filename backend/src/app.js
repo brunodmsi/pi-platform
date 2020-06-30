@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:4040/',
-  'http://pi.omnicesupa.com/',
+  'https://pi.omnicesupa.com',
   'https://pi.omnicesupa.com/',
 ];
 
