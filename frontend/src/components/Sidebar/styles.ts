@@ -15,7 +15,6 @@ export const Container = styled.nav`
 
   .cesupa-logo-nav {
     width: 150px;
-    /* justify-content: center; */
     margin-bottom: 40px;
   }
 
@@ -33,16 +32,6 @@ export const Container = styled.nav`
     img {
       width: 150px;
     }
-
-    /* h3 {
-      font-size: 60px;
-    }
-
-    p {
-      font-family: 'Montserrat', serif;
-      font-size: 30px;
-      font-weight: 100;
-    } */
   }
 
   ul {

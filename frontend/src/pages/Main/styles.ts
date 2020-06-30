@@ -20,7 +20,7 @@ export const Container = styled.div`
       height: 5rem;
       z-index: 999;
 
-      .cesupa-logo-nav, img {
+      .moreinfo, .cesupa-logo-nav {
         display: none;
       }
 
