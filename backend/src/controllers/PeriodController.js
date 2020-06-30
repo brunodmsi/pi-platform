@@ -32,6 +32,19 @@ class PeriodController {
     return res.json(period);
   }
 
+  async update(req, res) {
+    const { id } = req.params;
+    const { description } = req.body;
+
+    const period = await Period.findByIdAndUpdate({ _id: id }, {
+      description
+    }, {
+      new: true
+    });
+
+    return res.json(period);
+  }
+
   async destroy(req, res) {
     const { id } = req.params;
 
