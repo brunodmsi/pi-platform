@@ -3,9 +3,29 @@ const Project = require('../models/Project');
 
 class VoteController {
   async index(req, res) {
-    const votes = await Vote.find({});
+    const votes = await Vote.aggregate([
+      {
+        $group: {
+          _id: '$project_id',
+          counter: { $sum: 1 },
+        }
+      },
+      {
+        $sort: {
+          counter: -1
+        }
+      }
+    ])
 
-    return res.json(votes);
+    const populated = await Project.populate(
+      votes,
+      {
+        path: '_id',
+        select: 'title image times_clicked period_id'
+      }
+    );
+
+    return res.json(populated);
   }
 
   async show(req, res) {
