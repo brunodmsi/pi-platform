@@ -84,11 +84,11 @@ const Main: React.FC = () => {
             <a href="https://omnicesupa.com"><img src={omniImg} alt="OMNI"/></a>
           </section>
 
-          {/* <p className="vote-text">A votação acaba em</p>
-          <p className="vote-timer">{getTimeRemaining()}</p> */}
+          <p className="vote-text">A votação acaba em</p>
+          <p className="vote-timer">{getTimeRemaining()}</p>
         </IntroductionContent>
 
-        <Continue>
+        {/* <Continue>
           <Link
             to={periods ? periods[0]._id : 'null'}
             smooth={true}
@@ -96,7 +96,7 @@ const Main: React.FC = () => {
             <p>Clique aqui para continuar</p>
             <FaArrowDown size={20} />
           </Link>
-        </Continue>
+        </Continue> */}
 
         {periods?.map(period => (
           <Period id={period._id}>
