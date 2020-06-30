@@ -41,10 +41,26 @@ export const IntroductionContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 85vh;
+  min-height: 85vh;
   width: 100%;
   max-width: 900px;
   margin-left: 50px;
+
+  section {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 250px;
+      margin-right: 10px;
+    }
+  }
+
+  h1 {
+    font-size: 50px;
+    color: #7380f3;
+    margin-bottom: 20px;
+  }
 
   p {
     font-size: 24px;
@@ -70,6 +86,10 @@ export const IntroductionContent = styled.div`
   }
 
   @media only screen and (max-width: 1200px) {
+    h1 {
+      font-size: 40px;
+    }
+
     .introduction-info {
       font-size: 30px;
       max-width: 700px;
@@ -84,8 +104,18 @@ export const IntroductionContent = styled.div`
   }
 
   @media only screen and (max-width: 650px) {
-    .introduction-info {
+    h1 {
       font-size: 30px;
+    }
+
+    section {
+      img {
+        width: 200px;
+      }
+    }
+
+    .introduction-info {
+      font-size: 25px;
       max-width: 400px;
     }
 
@@ -105,20 +135,26 @@ export const IntroductionContent = styled.div`
     margin-left: 10px;
     place-content: center;
 
+    section {
+      img {
+        width: 150px;
+      }
+    }
+
     .introduction-info {
-      font-size: 25px;
+      font-size: 20px;
       max-width: 300px;
     }
 
     .vote-text {
-      margin-top: 50px;
+      margin-top: 10px;
       font-size: 20px;
       font-weight: 100;
     }
 
     .vote-timer {
       word-wrap: break-word;
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 500;
     }
   }
@@ -166,8 +202,6 @@ export const Period = styled.div`
   color: #7380f3;
   margin-left: 5rem;
 
-  margin-bottom: 5rem;
-
   h3 {
     font-size: 50px;
     font-weight: 600;
@@ -175,6 +209,10 @@ export const Period = styled.div`
 
   p {
     font-size: 30px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 5rem;
   }
 
   @media only screen and (max-width: 900px) {

@@ -8,6 +8,9 @@ import Modal from '../../components/Modal';
 
 import api from '../../services/api';
 
+import paraticImg from '../../assets/paratic2.png';
+import omniImg from '../../assets/omni-07.png';
+
 export interface Project {
   _id: string;
   image: string;
@@ -64,9 +67,21 @@ const Main: React.FC = () => {
 
       <main>
         <IntroductionContent>
-          <p>Olá,</p>
-          <p className="introduction-info">Nesta página você poderá votar nos projetos integrados de Ciência da Computação</p>
-          <p className="introduction-info">Para saber mais sobre os projetos, clique em cima deles, e quando achar o que te chamou mais atenção, vote!</p>
+          <h1 className="introduction-name">Portal de projetos da Soft Amostra</h1>
+
+          <p className="introduction-info">
+            Este portal reúne Amostra Digital dos projetos tecnológicos dos graduandos do 3º, 5º e 7º
+            do curso de Bacharelado em Ciência da Computação do CESUPA.
+          </p>
+          <p className="introduction-info">Ajude-nos a escolher os melhores projetos!</p>
+          <p className="introduction-info">Para isso, basta selecionar o período da turma e votar no projeto que você contrataria.</p>
+
+          <p>Realizado por:</p>
+          <section>
+            <a href="http://www.paratic.com.br/"><img src={paraticImg} alt="PARATIC"/></a>
+            <a href="https://omnicesupa.com"><img src={omniImg} alt="OMNI"/></a>
+          </section>
+
           <p className="vote-text">A votação acaba em</p>
           <p className="vote-timer">{getTimeRemaining()}</p>
         </IntroductionContent>
