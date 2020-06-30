@@ -121,6 +121,16 @@ export const IntroductionContent = styled.div`
     }
   }
 
+  @media (max-width: 700px) {
+    section {
+      div {
+        img {
+          width: 150px;
+        }
+      }
+    }
+  }
+
   @media (max-width: 550px) {
     .softamostra-logo {
       width: 400px;
@@ -134,13 +144,6 @@ export const IntroductionContent = styled.div`
       margin: 20px 0 20px 0;
     }
 
-    section {
-      div {
-        img {
-          width: 150px;
-        }
-      }
-    }
   }
 
   @media (max-width: 450px) {
@@ -156,6 +159,8 @@ export const IntroductionContent = styled.div`
 
     section {
       div {
+        flex-direction: column;
+
         img {
           width: 120px;
         }
