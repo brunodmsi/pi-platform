@@ -73,7 +73,7 @@ const Main: React.FC = () => {
 
           <p className="introduction-info">
             O portal SoftAmostra reúne uma Amostra Digital dos projetos tecnológicos dos graduandos do 3º, 5º e 7º
-            do curso de Bacharelado em Ciência da Computação do CESUPA.
+            períodos do curso de Bacharelado em Ciência da Computação do CESUPA.
           </p>
           <p className="introduction-info blue"><strong>Ajude-nos a escolher os melhores projetos!</strong></p>
           <p className="introduction-info">Para isso, basta selecionar o período da turma e votar na melhor proposta para o mercado.</p>
