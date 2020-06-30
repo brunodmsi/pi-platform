@@ -20,7 +20,7 @@ export const Container = styled.div`
       height: 5rem;
       z-index: 999;
 
-      .moreinfo {
+      .cesupa-logo-nav, img {
         display: none;
       }
 
@@ -44,7 +44,7 @@ export const IntroductionContent = styled.div`
   min-height: 85vh;
   width: 100%;
   max-width: 900px;
-  margin-left: 50px;
+  margin-left: 70px;
 
   section {
     display: flex;
@@ -63,19 +63,25 @@ export const IntroductionContent = styled.div`
   }
 
   p {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
   }
 
   .introduction-img {
     width: 500px;
+    margin-left: -20px;
   }
 
   .introduction-info {
     font-weight: 500;
     margin-bottom: 20px;
     word-wrap: break-word;
-    font-size: 35px;
+    font-size: 30px;
+  }
+
+  .blue {
+    color: #7380f3;
+    margin-left: 80px;
   }
 
   .vote-text {
@@ -94,6 +100,10 @@ export const IntroductionContent = styled.div`
       font-size: 40px;
     }
 
+    .blue {
+      margin-left: 50px;
+    }
+
     .introduction-info {
       font-size: 30px;
       max-width: 700px;
@@ -102,7 +112,7 @@ export const IntroductionContent = styled.div`
 
   @media only screen and (max-width: 980px) {
     .introduction-info {
-      font-size: 30px;
+      font-size: 25px;
       max-width: 600px;
     }
   }
@@ -110,6 +120,10 @@ export const IntroductionContent = styled.div`
   @media only screen and (max-width: 650px) {
     .introduction-img {
       width: 400px;
+    }
+
+    .blue {
+      margin-left: 20px;
     }
 
     h1 {
@@ -123,7 +137,7 @@ export const IntroductionContent = styled.div`
     }
 
     .introduction-info {
-      font-size: 25px;
+      font-size: 20px;
       max-width: 400px;
     }
 
@@ -149,12 +163,17 @@ export const IntroductionContent = styled.div`
       }
     }
 
+    .blue {
+      margin-left: 10px;
+    }
+
     .introduction-img {
       width: 300px;
+      margin-left: -10px;
     }
 
     .introduction-info {
-      font-size: 20px;
+      font-size: 18px;
       max-width: 300px;
     }
 
