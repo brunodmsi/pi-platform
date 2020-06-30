@@ -85,7 +85,7 @@ const Main: React.FC = () => {
 
           <div className="vote-timer">
             <label>A votação acaba em</label>
-            <p>{getTimeRemaining()}</p>
+            {getTimeRemaining()}
           </div>
 
           <section>
@@ -103,7 +103,7 @@ const Main: React.FC = () => {
         </IntroductionContent>
 
         {periods?.map(period => (
-          <Period id={period._id}>
+          <Period key={period._id}>
             <h3>{period.name}</h3>
             <p>{period.description}</p>
 

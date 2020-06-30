@@ -34,6 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ periods, ...rest }) => {
             spy={true}
             smooth={true}
             duration={200}
+            key={item._id}
           >
             <li key={item._id}>{item.name}</li>
           </Link>
