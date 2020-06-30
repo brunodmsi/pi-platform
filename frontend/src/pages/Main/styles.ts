@@ -57,7 +57,7 @@ export const IntroductionContent = styled.div`
   }
 
   h1 {
-    font-size: 50px;
+    font-size: 0px;
     color: #7380f3;
     margin-bottom: 20px;
   }
@@ -76,7 +76,7 @@ export const IntroductionContent = styled.div`
     font-weight: 500;
     margin-bottom: 20px;
     word-wrap: break-word;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .blue {

@@ -3,7 +3,7 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 
 import { Container } from './styles';
 
-import softImg from '../../assets/softamostra.png';
+import softImg from '../../assets/softbranco.png';
 import cesupaImg from '../../assets/CESUPA-04.png';
 
 import { Periods } from '../../pages/Main/index';

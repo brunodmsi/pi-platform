@@ -69,6 +69,7 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
               // height="300"
               src={project.video}
               frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             ></iframe>
 
             <Votebox>
