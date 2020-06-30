@@ -10,7 +10,14 @@ export const Container = styled.nav`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  align-items: center;
   color: #fefefe;
+
+  .cesupa-logo-nav {
+    width: 150px;
+    /* justify-content: center; */
+    margin-bottom: 40px;
+  }
 
   p {
     align-self: center;
@@ -23,7 +30,11 @@ export const Container = styled.nav`
     align-items: center;
     margin-top: 30px;
 
-    h3 {
+    img {
+      width: 150px;
+    }
+
+    /* h3 {
       font-size: 60px;
     }
 
@@ -31,7 +42,7 @@ export const Container = styled.nav`
       font-family: 'Montserrat', serif;
       font-size: 30px;
       font-weight: 100;
-    }
+    } */
   }
 
   ul {

@@ -3,6 +3,9 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 
 import { Container } from './styles';
 
+import softImg from '../../assets/softamostra.png';
+import cesupaImg from '../../assets/CESUPA-04.png';
+
 import { Periods } from '../../pages/Main/index';
 interface SidebarProps {
   periods: Periods[] | null;
@@ -18,8 +21,9 @@ const Sidebar: React.FC<SidebarProps> = ({ periods, ...rest }) => {
   return (
     <Container>
       <header className="moreinfo">
-        <h3>pi</h3>
-        <p>2020</p>
+        {/* <h3>SoftAmostra</h3> */}
+        {/* <p>SoftAmostra</p> */}
+        <img src={softImg} alt="SoftAmostra"/>
       </header>
 
       <ul>
@@ -36,7 +40,7 @@ const Sidebar: React.FC<SidebarProps> = ({ periods, ...rest }) => {
         ))}
       </ul>
 
-      <p  className="moreinfo">Desenvolvido por OMNI</p>
+      <img src={cesupaImg} alt="CESUPA" className="cesupa-logo-nav" />
     </Container>
   )
 }

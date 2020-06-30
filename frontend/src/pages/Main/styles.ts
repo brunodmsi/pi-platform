@@ -67,6 +67,10 @@ export const IntroductionContent = styled.div`
     font-weight: 300;
   }
 
+  .introduction-img {
+    width: 500px;
+  }
+
   .introduction-info {
     font-weight: 500;
     margin-bottom: 20px;
@@ -104,6 +108,10 @@ export const IntroductionContent = styled.div`
   }
 
   @media only screen and (max-width: 650px) {
+    .introduction-img {
+      width: 400px;
+    }
+
     h1 {
       font-size: 30px;
     }
@@ -139,6 +147,10 @@ export const IntroductionContent = styled.div`
       img {
         width: 150px;
       }
+    }
+
+    .introduction-img {
+      width: 300px;
     }
 
     .introduction-info {

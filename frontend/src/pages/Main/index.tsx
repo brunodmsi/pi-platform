@@ -10,6 +10,7 @@ import api from '../../services/api';
 
 import paraticImg from '../../assets/paratic2.png';
 import omniImg from '../../assets/omni-07.png';
+import softImg from '../../assets/softamostra-03.svg';
 
 export interface Project {
   _id: string;
@@ -67,16 +68,17 @@ const Main: React.FC = () => {
 
       <main>
         <IntroductionContent>
-          <h1 className="introduction-name">Portal de projetos da Soft Amostra</h1>
+          <img src={softImg} alt="" className="introduction-img"/>
+          {/* <h1 className="introduction-name">Portal de projetos</h1> */}
 
           <p className="introduction-info">
-            Este portal reúne Amostra Digital dos projetos tecnológicos dos graduandos do 3º, 5º e 7º
+            O portal SoftAmostra reúne uma Amostra Digital dos projetos tecnológicos dos graduandos do 3º, 5º e 7º
             do curso de Bacharelado em Ciência da Computação do CESUPA.
           </p>
           <p className="introduction-info">Ajude-nos a escolher os melhores projetos!</p>
           <p className="introduction-info">Para isso, basta selecionar o período da turma e votar na melhor proposta para o mercado.</p>
 
-          <p>Realizado por:</p>
+          <p>Apoio:</p>
           <section>
             <a href="http://www.paratic.com.br/"><img src={paraticImg} alt="PARATIC"/></a>
             <a href="https://omnicesupa.com"><img src={omniImg} alt="OMNI"/></a>
