@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowDown } from 'react-icons/fa';
-import { Link, animateScroll as scroll } from 'react-scroll';
 
-import { Container, IntroductionContent, Continue, Period, Cards, Card } from './styles';
+import { Container, IntroductionContent, Period, Cards, Card } from './styles';
 import Sidebar from '../../components/Sidebar';
 import Modal from '../../components/Modal';
 
@@ -11,6 +9,7 @@ import api from '../../services/api';
 import paraticImg from '../../assets/paratic2.png';
 import omniImg from '../../assets/omni-07.png';
 import softImg from '../../assets/softamostra-curvas-03.svg';
+import cesupaImg from '../../assets/CESUPA-04.png';
 
 export interface Project {
   _id: string;
@@ -68,35 +67,38 @@ const Main: React.FC = () => {
 
       <main>
         <IntroductionContent>
-          <img src={softImg} alt="" className="introduction-img"/>
-          {/* <h1 className="introduction-name">Portal de projetos</h1> */}
+          <img src={softImg} alt="SoftAmostra" className="softamostra-logo"/>
 
-          <p className="introduction-info">
+          <p>
             O portal SoftAmostra reúne uma Amostra Digital dos projetos tecnológicos dos graduandos do 3º, 5º e 7º
-            períodos do curso de Bacharelado em Ciência da Computação do CESUPA.
+            períodos do curso de <strong>Bacharelado em Ciência da Computação do CESUPA</strong>.
           </p>
-          <p className="introduction-info blue"><strong>Ajude-nos a escolher os melhores projetos!</strong></p>
-          <p className="introduction-info">Para isso, basta selecionar o período da turma e votar na melhor proposta para o mercado.</p>
 
-          <p>Apoio:</p>
+          <p className="box"><strong>Ajude-nos a escolher os melhores projetos!</strong></p>
+
+          <p>Para isso, basta selecionar o período da turma e votar na melhor proposta para o mercado.</p>
+
+          <a href="https://www.cesupa.br/Graduacao/Exatas/bcc.asp">
+            Quer saber mais sobre o curso de Ciência da Computação? Clique aqui
+          </a>
+
+          <div className="vote-timer">
+            <label>A votação acaba em</label>
+            <p>{getTimeRemaining()}</p>
+          </div>
+
           <section>
-            <a href="http://www.paratic.com.br/"><img src={paraticImg} alt="PARATIC"/></a>
-            <a href="https://omnicesupa.com"><img src={omniImg} alt="OMNI"/></a>
+            <p>APOIO</p>
+
+            <div>
+              <a href="http://www.paratic.com.br/"><img src={paraticImg} alt="PARATIC"/></a>
+              <a href="https://omnicesupa.com"><img src={omniImg} alt="OMNI"/></a>
+            </div>
           </section>
 
-          <p className="vote-text">A votação acaba em</p>
-          <p className="vote-timer">{getTimeRemaining()}</p>
-        </IntroductionContent>
+          <img src={cesupaImg} alt="CESUPA" className="cesupa-logo"/>
 
-        {/* <Continue>
-          <Link
-            to={periods ? periods[0]._id : 'null'}
-            smooth={true}
-          >
-            <p>Clique aqui para continuar</p>
-            <FaArrowDown size={20} />
-          </Link>
-        </Continue> */}
+        </IntroductionContent>
 
         {periods?.map(period => (
           <Period id={period._id}>
