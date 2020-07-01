@@ -4,7 +4,9 @@ import Main from './pages/Main';
 
 import GlobalStyle from './styles/global';
 
-ReactGA.initialize('UA-171406858');
+ReactGA.initialize('UA-171406858-1', {
+  // debug: true
+});
 
 const App: React.FC = () => {
   useEffect(() => {
