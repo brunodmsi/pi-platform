@@ -103,7 +103,7 @@ const Main: React.FC = () => {
         </IntroductionContent>
 
         {periods?.map(period => (
-          <Period key={period._id}>
+          <Period id={period._id} key={period._id}>
             <h3>{period.name}</h3>
             <p>{period.description}</p>
 
