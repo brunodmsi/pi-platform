@@ -32,7 +32,7 @@ export interface Periods {
 }
 
 const Main: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState('');
+  const [modalOpen, setModalOpen] = useState('none');
   const [periods, setPeriods] = useState<Periods[] | null>(null);
 
   useEffect(() => {
@@ -57,10 +57,14 @@ const Main: React.FC = () => {
     api.post(`/projects/click/${_id}`);
 
     setModalOpen(_id);
+
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
     setModalOpen('none');
+
+    document.body.style.overflow = 'unset';
   }
 
   return (
