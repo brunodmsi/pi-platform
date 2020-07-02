@@ -27,6 +27,7 @@ class VoteController {
     );
 
     const projectVotes = populated.map(query => {
+<<<<<<< HEAD
       if (query._id !== null) 
         return {
           _id: query._id._id,
@@ -37,9 +38,22 @@ class VoteController {
          uniqueVotes: query.email.length
         }
       return {}
+=======
+      return {
+        _id: query._id._id,
+        title: query._id.title,
+        image: query._id.image,
+        period_id: query._id.period_id,
+        times_clicked: query._id.times_clicked,
+        totalVotes: query.counter,
+        uniqueVotes: query.email.length
+      }
+>>>>>>> d6986ee3856154ef1534746a3f93e0177ecf23bb
     })
 
-    return res.json(projectVotes);
+    return res.json({
+      projects: projectVotes,
+    });
   }
 
   async show(req, res) {
