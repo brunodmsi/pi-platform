@@ -27,14 +27,16 @@ class VoteController {
     );
 
     const projectVotes = populated.map(query => {
-      return {
-        _id: query._id._id,
-        title: query._id.title,
-        image: query._id.image,
-        period_id: query._id.period_id,
-        totalVotes: query.counter,
-        uniqueVotes: query.email.length
-      }
+      if (query._id !== null) 
+        return {
+          _id: query._id._id,
+          title: query._id.title,
+          image: query._id.image,
+          period_id: query._id.period_id,
+          totalVotes: query.counter,
+         uniqueVotes: query.email.length
+        }
+      return {}
     })
 
     return res.json(projectVotes);
