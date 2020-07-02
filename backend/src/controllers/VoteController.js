@@ -32,12 +32,15 @@ class VoteController {
         title: query._id.title,
         image: query._id.image,
         period_id: query._id.period_id,
+        times_clicked: query._id.times_clicked,
         totalVotes: query.counter,
         uniqueVotes: query.email.length
       }
     })
 
-    return res.json(projectVotes);
+    return res.json({
+      projects: projectVotes,
+    });
   }
 
   async show(req, res) {
