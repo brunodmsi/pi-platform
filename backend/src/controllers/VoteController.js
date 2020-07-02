@@ -27,32 +27,33 @@ class VoteController {
     );
 
     const projectVotes = populated.map(query => {
-<<<<<<< HEAD
-      if (query._id !== null) 
+      if (query._id !== null)
         return {
           _id: query._id._id,
           title: query._id.title,
           image: query._id.image,
           period_id: query._id.period_id,
           totalVotes: query.counter,
-         uniqueVotes: query.email.length
+          uniqueVotes: query.email.length
         }
-      return {}
-=======
-      return {
-        _id: query._id._id,
-        title: query._id.title,
-        image: query._id.image,
-        period_id: query._id.period_id,
-        times_clicked: query._id.times_clicked,
-        totalVotes: query.counter,
-        uniqueVotes: query.email.length
-      }
->>>>>>> d6986ee3856154ef1534746a3f93e0177ecf23bb
-    })
+
+      return null
+    }).filter(element => element !== null);
+    console.log(projectVotes)
+
+    const allVotesCount = projectVotes.reduce(
+      (acc, val) => acc + val.totalVotes,
+      0
+    );
+    const uniqueVotesCount = projectVotes.reduce(
+      (acc, val) => acc + val.uniqueVotes,
+      0
+    );
 
     return res.json({
       projects: projectVotes,
+      allVotesCount,
+      uniqueVotesCount
     });
   }
 
