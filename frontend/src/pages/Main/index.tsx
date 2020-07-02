@@ -11,6 +11,7 @@ import omniImg from '../../assets/omni-07.png';
 import softImg from '../../assets/softamostra-curvas-03.svg';
 import cesupaImg from '../../assets/CESUPA-04.png';
 import w3Img from '../../assets/icon_w3.svg';
+import jambuImg from '../../assets/jambu.png';
 
 export interface Project {
   _id: string;
@@ -95,6 +96,7 @@ const Main: React.FC = () => {
               <a href="http://www.paratic.com.br/"><img src={paraticImg} alt="PARATIC"/></a>
               <a href="https://omnicesupa.com"><img src={omniImg} alt="OMNI"/></a>
               <a href="http://w3as.com.br/"><img src={w3Img} alt="W3"/></a>
+              <a href="http://jambu.com.br/"><img src={jambuImg} alt="Jambu"/></a>
             </div>
           </section>
 

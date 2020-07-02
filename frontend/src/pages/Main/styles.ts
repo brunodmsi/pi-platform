@@ -93,16 +93,17 @@ export const IntroductionContent = styled.div`
     }
 
     div {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       align-items: center;
       justify-content: space-between;
       padding: 10px 20px;
       border-radius: 30px;
       background-color: #fefefe;
-      max-width: 700px;
+      max-width: 800px;
 
       img {
-        width: 220px;
+        width: 150px;
       }
     }
   }
