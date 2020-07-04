@@ -8,52 +8,54 @@ class VoteController {
         $group: {
           _id: '$project_id',
           counter: { $sum: 1 },
-          email: { $addToSet: '$email' }
-        }
+          email: { $addToSet: '$email' },
+        },
       },
       {
         $sort: {
-          counter: -1
-        }
-      }
-    ])
+          counter: -1,
+        },
+      },
+    ]);
 
     const populated = await Project.populate(
       votes,
       {
         path: '_id',
-        select: 'title image times_clicked period_id'
-      }
+        select: 'title image times_clicked period_id',
+      },
     );
 
-    const projectVotes = populated.map(query => {
-      if (query._id !== null)
+    const projectVotes = populated.map((query) => {
+      if (query._id !== null) {
         return {
           _id: query._id._id,
           title: query._id.title,
           image: query._id.image,
+          times_clicked: query._id.times_clicked,
           period_id: query._id.period_id,
           totalVotes: query.counter,
-          uniqueVotes: query.email.length
-        }
+          uniqueVotes: query.email.length,
+        };
+      }
 
-      return null
-    }).filter(element => element !== null);
-    console.log(projectVotes)
+      return null;
+    }).filter((element) => element !== null);
+    console.log(projectVotes);
 
     const allVotesCount = projectVotes.reduce(
       (acc, val) => acc + val.totalVotes,
-      0
+      0,
     );
     const uniqueVotesCount = projectVotes.reduce(
       (acc, val) => acc + val.uniqueVotes,
-      0
+      0,
     );
 
     return res.json({
       projects: projectVotes,
       allVotesCount,
-      uniqueVotesCount
+      uniqueVotesCount,
     });
   }
 
@@ -61,10 +63,10 @@ class VoteController {
     const { projectId } = req.params;
 
     const votes = await Vote.find({
-      project_id: projectId
-    })
+      project_id: projectId,
+    });
 
-    return res.json(votes)
+    return res.json(votes);
   }
 
   async store(req, res) {
@@ -73,14 +75,14 @@ class VoteController {
     try {
       const voting = await Vote.create({
         project_id: projectId,
-        email
+        email,
       });
 
       return res.json(voting);
-    } catch(err) {
+    } catch (err) {
       return res.status(400).json({
-        message: 'Falha ao cadastrar'
-      })
+        message: 'Falha ao cadastrar',
+      });
     }
   }
 }
