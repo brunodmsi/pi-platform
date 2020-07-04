@@ -73,14 +73,9 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
 
             <Votebox>
               <h1>VOTE AQUI</h1>
-              <p>Insira o seu e-mail para realizar a votacao desse projeto</p>
-              <form onSubmit={handleSubmit}>
-                {/* <ReCaptcha
-                  ref={recaptchaRef}
-                  sitekey="6LcLvKsZAAAAAKi4BGVQRZIY4ix-feTKB_2-RWuk"
-                  onChange={onChange}
-                /> */}
+              <p>Insira o seu email* para realizar a votacao desse projeto</p>
 
+              <form onSubmit={handleSubmit}>
                 <input
                   name="email"
                   value={email}
@@ -88,6 +83,8 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
                   placeholder="Seu e-mail"
                 />
                 <button type="submit">VOTAR</button>
+
+                <span>* So sera valido 1 voto por email</span>
               </form>
             </Votebox>
           </div>

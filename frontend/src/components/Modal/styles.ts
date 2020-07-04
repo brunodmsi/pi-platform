@@ -144,6 +144,12 @@ export const Votebox = styled.div`
       color: #fefefe;
       font-size: 20px;
     }
+
+    span {
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+    }
   }
 
   p {
