@@ -23,14 +23,10 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
   }, [])
 
   function onChange(data: string | null) {
-    console.log(data);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    // const test = recaptchaRef.current?.getValue();
-    // console.log(test);
 
     try {
       const schema = Yup.object().shape({
@@ -38,7 +34,6 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
           .email()
           .required()
       });
-      console.log(email);
 
       await schema.validate({ email }, {
         abortEarly: false

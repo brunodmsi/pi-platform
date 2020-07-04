@@ -41,7 +41,6 @@ class VoteController {
 
       return null;
     }).filter((element) => element !== null);
-    console.log(projectVotes);
 
     const allVotesCount = projectVotes.reduce(
       (acc, val) => acc + val.totalVotes,
