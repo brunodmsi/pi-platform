@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
 
             <Votebox>
               <h1>VOTE AQUI</h1>
-              <p>Insira o seu email* para realizar a votacao desse projeto</p>
+              <p>Insira o seu email* para realizar a votação desse projeto</p>
 
               <form onSubmit={handleSubmit}>
                 <input
@@ -84,7 +84,7 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
                 />
                 <button type="submit">VOTAR</button>
 
-                <span>* So sera valido 1 voto por email</span>
+                <span>* Só será valido 1 voto por email</span>
               </form>
             </Votebox>
           </div>
