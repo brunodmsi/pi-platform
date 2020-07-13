@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import Main from './pages/Main';
+
+import Routes from './routes';
 
 import GlobalStyle from './styles/global';
 
@@ -14,10 +16,10 @@ const App: React.FC = () => {
   })
 
   return (
-    <>
-      <Main />
+    <Router>
+      <Routes />
       <GlobalStyle />
-    </>
+    </Router>
   );
 }
 

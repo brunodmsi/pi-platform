@@ -21,8 +21,6 @@ const Sidebar: React.FC<SidebarProps> = ({ periods, ...rest }) => {
   return (
     <Container>
       <header className="moreinfo">
-        {/* <h3>SoftAmostra</h3> */}
-        {/* <p>SoftAmostra</p> */}
         <img src={softImg} alt="SoftAmostra"/>
       </header>
 
