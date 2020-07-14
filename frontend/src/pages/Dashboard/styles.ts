@@ -69,3 +69,47 @@ export const Projects = styled.div`
     }
   }
 `;
+
+export const AuthBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fefefe;
+  color: #707070;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 4px;
+
+  img {
+    width: 400px;
+  }
+
+  h2 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  span {
+    margin-top: 5px;
+    color: #a64452;
+  }
+
+  form {
+    display: flex;
+
+    input {
+      padding: 20px;
+      border: 1px solid #fe7940;
+      width: 100%;
+    }
+
+    button  {
+      background-color: #fe7940;
+      border: 0;
+      padding: 20px;
+      color: #fefefe;
+    }
+  }
+`;

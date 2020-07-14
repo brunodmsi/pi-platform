@@ -15,8 +15,8 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
-  // const recaptchaRef = useRef<ReCaptcha>(null);
   const [email, setEmail] = useState('');
+
   useEffect(() => {
     ReactModal.setAppElement('body');
   }, [])
