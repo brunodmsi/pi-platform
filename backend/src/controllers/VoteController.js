@@ -30,9 +30,8 @@ class VoteController {
       if (query._id !== null) {
         return {
           _id: query._id._id,
-          // title: query._id.title,
-          // image: query._id.image,
-          times_clicked: query._id.times_clicked,
+          title: query._id.title,
+          views: query._id.times_clicked,
           period_id: query._id.period_id,
           totalVotes: query.counter,
           uniqueVotes: query.email.length,
