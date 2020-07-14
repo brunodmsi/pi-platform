@@ -1,5 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-import { darken } from 'polished';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   main {

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import * as Yup from 'yup';
-// import ReCaptcha, { ReCAPTCHAProps } from 'react-google-recaptcha';
 import './styles.css';
 
 import { Container, Votebox } from './styles';
@@ -21,9 +20,6 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
   useEffect(() => {
     ReactModal.setAppElement('body');
   }, [])
-
-  function onChange(data: string | null) {
-  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -66,6 +62,7 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
 
           <div>
             <iframe
+              title={`${project._id}`}
               src={project.video}
               frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
