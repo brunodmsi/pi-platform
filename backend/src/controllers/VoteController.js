@@ -3,17 +3,14 @@ const Project = require('../models/Project');
 
 class VoteController {
   async index(req, res) {
+    const { filter } = req.query;
+
     const votes = await Vote.aggregate([
       {
         $group: {
           _id: '$project_id',
-          counter: { $sum: 1 },
-          email: { $addToSet: '$email' },
-        },
-      },
-      {
-        $sort: {
-          counter: -1,
+          total: { $sum: 1 },
+          unique: { $addToSet: '$email' },
         },
       },
     ]);
@@ -33,8 +30,8 @@ class VoteController {
           title: query._id.title,
           views: query._id.times_clicked,
           period_id: query._id.period_id,
-          totalVotes: query.counter,
-          uniqueVotes: query.email.length,
+          totalVotes: query.total,
+          uniqueVotes: query.unique.length,
         };
       }
 
@@ -50,8 +47,26 @@ class VoteController {
       0,
     );
 
+    const projectsSortedByFilter = projectVotes.sort((a, b) => {
+      const filterType = filter !== 'unique' &&
+                          filter !== 'total' ?
+                          '' :
+                          `${filter}Votes`
+      ;
+
+      if (a[filterType] > b[filterType]) {
+        return -1;
+      }
+
+      if (a[filterType] < b[filterType]) {
+        return 1;
+      }
+
+      return 0;
+    });
+
     return res.json({
-      projects: projectVotes,
+      projects: projectsSortedByFilter,
       allVotesCount,
       uniqueVotesCount,
     });

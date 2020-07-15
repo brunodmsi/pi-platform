@@ -7,8 +7,6 @@ apiKeys.set('2f9b8a8', true);
 module.exports = async (req, res, next) => {
   const key = req.header('X-API-KEY');
 
-  console.log(key);
-
   if (apiKeys.has(key)) {
     next();
   } else {
