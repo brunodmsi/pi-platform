@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import api from '../../services/api';
 
@@ -19,13 +19,13 @@ const Dashboard: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const [projects, setProjects] = useState([] as ProjectVotes[]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState('total');
 
   const handleAuthSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const response = await api.get('/votes', {
+      const response = await api.get(`/votes?filter=${filter}`, {
         headers: {
           'X-API-KEY': authKey
         }
@@ -37,25 +37,19 @@ const Dashboard: React.FC = () => {
     } catch(error) {
       setErrorMessage('Chave de acesso invalida')
     }
-  }, [authKey])
+  }, [authKey, filter])
 
-  useEffect(() => {
-    function compare(a: ProjectVotes, b: ProjectVotes) {
-      let comparison = 0;
-      const type = filter === 'total' ? 'totalVotes' : 'uniqueVotes';
+  const handleSortChange = useCallback(async (type: string) => {
+    setFilter(type);
 
-      if (a[type] > b[type]) {
-        comparison = 1;
-      } else if (a[type] < b[type]) {
-        comparison = -1;
+    const response = await api.get(`/votes?filter=${type}`, {
+      headers: {
+        'X-API-KEY': authKey
       }
+    });
 
-      return comparison;
-    }
-
-    const newProjects = projects.sort(compare);
-    setProjects(newProjects);
-  }, [filter, projects]);
+    setProjects(response.data.projects);
+  }, [authKey])
 
   return (
     <Container>
@@ -75,26 +69,26 @@ const Dashboard: React.FC = () => {
             <div>
               <label
                 htmlFor="total"
-                onClick={() => setFilter('total')}
+                onClick={() => handleSortChange('total')}
               >
                 <input
                   type="radio"
                   value="total"
                   checked={filter === 'total'}
-                  onChange={e => setFilter(e.target.value)}
+                  onChange={() => {}}
                 />
                 Votos totais
               </label>
 
               <label
                 htmlFor="unique"
-                onClick={() => setFilter('unique')}
+                onClick={() => handleSortChange('unique')}
               >
                 <input
                   type="radio"
                   value="unique"
                   checked={filter === 'unique'}
-                  onChange={e => setFilter(e.target.value)}
+                  onChange={() => {}}
                 />
                 Votos únicos
               </label>
