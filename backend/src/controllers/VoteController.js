@@ -1,5 +1,6 @@
 const Vote = require('../models/Vote');
 const Project = require('../models/Project');
+const { isAfter, parseISO } = require('date-fns');
 
 class VoteController {
   async index(req, res) {
@@ -84,6 +85,18 @@ class VoteController {
 
   async store(req, res) {
     const { projectId, email } = req.body;
+
+    const { isAfter, parseISO } = require('date-fns');
+
+    const date = '2020-07-19 23:59:59';
+    const parsedDate = parseISO(date);
+    const nowDate = new Date();
+
+    if (isAfter(nowDate, parsedDate)) {
+      return res.status(401).json({
+        message: 'O tempo de votação já acabou!'
+      })
+    }
 
     try {
       const voting = await Vote.create({
