@@ -113,4 +113,12 @@ export const AuthBox = styled.div`
       color: #fefefe;
     }
   }
+
+  @media (max-width: 450px) {
+    max-width: 350px;
+
+    img {
+      width: 250px;
+    }
+  }
 `;
