@@ -45,7 +45,7 @@ export const Projects = styled.div`
   section {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 
   section#table-project {
@@ -58,6 +58,7 @@ export const Projects = styled.div`
 
     p {
       font-size: 20px;
+      align-items: center;
     }
 
     &:hover {

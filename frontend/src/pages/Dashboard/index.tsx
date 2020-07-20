@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { FaTable } from 'react-icons/fa';
 
 import api from '../../services/api';
 
@@ -51,6 +52,26 @@ const Dashboard: React.FC = () => {
     setProjects(response.data.projects);
   }, [authKey])
 
+  const getProjectVotesTable = useCallback(async (
+    id: string|undefined,
+    title: string|undefined
+  ) => {
+    const response = await api.get(`/votes/${id}/emails`, {
+      responseType: 'blob',
+      method: 'GET',
+      headers: {
+        'X-API-KEY': authKey,
+      }
+    });
+
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${title}.xlsx`);
+    document.body.appendChild(link);
+    link.click();
+  }, [authKey]);
+
   return (
     <Container>
       {isAuth ? (
@@ -101,14 +122,20 @@ const Dashboard: React.FC = () => {
               <p>Votos totais</p>
               <p>Votos únicos</p>
               <p>Visualizações</p>
+              <p>Tabela de emails</p>
             </section>
 
             {projects.map(project => (
-              <section id="table-project" key={project._id}>
+              <section
+                id="table-project"
+                key={project._id}
+                onClick={() => getProjectVotesTable(project?._id, project?.title)}
+              >
                 <p>{project.title}</p>
                 <p>{project.totalVotes}</p>
                 <p>{project.uniqueVotes}</p>
                 <p>{project.views}</p>
+                <p><FaTable size={25} color="#000"/></p>
               </section>
             ))}
           </Projects>
