@@ -78,8 +78,9 @@ const Modal: React.FC<ModalProps> = ({ project, isOpen, close }) => {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="Seu e-mail"
+                  disabled
                 />
-                <button type="submit">VOTAR</button>
+                <button disabled type="submit">VOTAR</button>
 
                 <span>* Só será valido 1 voto por email</span>
               </form>

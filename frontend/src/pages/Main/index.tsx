@@ -42,14 +42,14 @@ const Main: React.FC = () => {
   }, []);
 
   function getTimeRemaining() {
-    const endtime = '2020-07-20T02:59:59Z';
-    const total = Date.parse(endtime) - Date.parse(new Date().toISOString());
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+    // const endtime = '2020-07-20T02:59:59Z';
+    // const total = Date.parse(endtime) - Date.parse(new Date().toISOString());
+    // const minutes = Math.floor((total / 1000 / 60) % 60);
+    // const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    // const days = Math.floor(total / (1000 * 60 * 60 * 24));
 
     return (
-      <p className="vote-timer">{days} dias, {hours} horas e {minutes} minutos</p>
+      <p className="vote-timer">VOTAÇÃO ENCERRADA!</p>
     )
   }
 

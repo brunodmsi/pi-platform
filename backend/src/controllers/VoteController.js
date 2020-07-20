@@ -88,7 +88,7 @@ class VoteController {
 
     const { isAfter, parseISO } = require('date-fns');
 
-    const date = '2020-07-19 23:59:59';
+    const date = '2020-07-19 20:59:59';
     const parsedDate = parseISO(date);
     const nowDate = new Date();
 
