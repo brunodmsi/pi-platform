@@ -1,6 +1,6 @@
-const Vote = require('../models/Vote');
-const Project = require('../models/Project');
-const { isAfter, parseISO } = require('date-fns');
+const Vote = require("../models/Vote");
+const Project = require("../models/Project");
+const { isAfter, parseISO } = require("date-fns");
 
 class VoteController {
   async index(req, res) {
@@ -9,52 +9,47 @@ class VoteController {
     const votes = await Vote.aggregate([
       {
         $group: {
-          _id: '$project_id',
+          _id: "$project_id",
           total: { $sum: 1 },
-          unique: { $addToSet: '$email' },
+          unique: { $addToSet: "$email" },
         },
       },
     ]);
 
-    const populated = await Project.populate(
-      votes,
-      {
-        path: '_id',
-        select: 'title image times_clicked period_id',
-      },
-    );
+    const populated = await Project.populate(votes, {
+      path: "_id",
+      select: "title image times_clicked period_id",
+    });
 
-    const projectVotes = populated.map((query) => {
-      if (query._id !== null) {
-        return {
-          _id: query._id._id,
-          title: query._id.title,
-          views: query._id.times_clicked,
-          period_id: query._id.period_id,
-          totalVotes: query.total,
-          uniqueVotes: query.unique.length,
-        };
-      }
+    const projectVotes = populated
+      .map((query) => {
+        if (query._id !== null) {
+          return {
+            _id: query._id._id,
+            title: query._id.title,
+            views: query._id.times_clicked,
+            period_id: query._id.period_id,
+            totalVotes: query.total,
+            uniqueVotes: query.unique.length,
+          };
+        }
 
-      return null;
-    }).filter((element) => element !== null);
+        return null;
+      })
+      .filter((element) => element !== null);
 
     const allVotesCount = projectVotes.reduce(
       (acc, val) => acc + val.totalVotes,
-      0,
+      0
     );
     const uniqueVotesCount = projectVotes.reduce(
       (acc, val) => acc + val.uniqueVotes,
-      0,
+      0
     );
 
     const projectsSortedByFilter = projectVotes.sort((a, b) => {
-      const filterType = filter !== 'unique' &&
-                          filter !== 'total' ?
-                          '' :
-                          `${filter}Votes`
-      ;
-
+      const filterType =
+        filter !== "unique" && filter !== "total" ? "" : `${filter}Votes`;
       if (a[filterType] > b[filterType]) {
         return -1;
       }
@@ -86,14 +81,14 @@ class VoteController {
   async store(req, res) {
     const { projectId, email } = req.body;
 
-    const date = '2020-07-19 20:59:59';
+    const date = "2022-07-19 20:59:59";
     const parsedDate = parseISO(date);
     const nowDate = new Date();
 
     if (isAfter(nowDate, parsedDate)) {
       return res.status(401).json({
-        message: 'O tempo de votação já acabou!'
-      })
+        message: "O tempo de votação já acabou!",
+      });
     }
 
     try {
@@ -105,7 +100,7 @@ class VoteController {
       return res.json(voting);
     } catch (err) {
       return res.status(400).json({
-        message: 'Falha ao cadastrar',
+        message: "Falha ao cadastrar",
       });
     }
   }
